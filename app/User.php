@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function messages_sent()
+    {
+        return $this->belongsTo('App\Message', 'sender_id');
+    }
+
+    public function messages_received()
+    {
+        return $this->belongsTo('App\Message', 'receiver_id');
+    }
 }
